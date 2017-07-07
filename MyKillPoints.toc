@@ -16,4 +16,3 @@ libs/LibStub/LibStub.lua
 
 ## code
 MyKillPoints.lua
-Console.lua
