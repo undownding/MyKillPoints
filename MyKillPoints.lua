@@ -6,7 +6,8 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-local MyKp = LibStub("AceAddon-3.0"):NewAddon("MyKillPoints", "AceConsole-3.0", "AceEvent-3.0")
+local AceAddon =  LibStub("AceAddon-3.0")
+local MyKp = AceAddon:NewAddon("MyKillPoints", "AceConsole-3.0", "AceEvent-3.0", "AceHook-3.0")
 
 local KpVaule
 local questId = 0
@@ -28,8 +29,6 @@ local emissaryQuests = {
     [46777] = true
 }
 
-RegisterAddonMessagePrefix('D4')
-
 function MyKp:OnInitialize()
     MyKillPointsDB = MyKillPointsDB or {}
     if (MyKillPointsDB.value == nil) then
@@ -43,23 +42,22 @@ end
 
 function MyKp:OnEnable()
     self:RegisterEvent("CHALLENGE_MODE_COMPLETED")
-    self:RegisterEvent("CHAT_MSG_ADDON")
     self:RegisterEvent("SHOW_LOOT_TOAST_LEGENDARY_LOOTED")
     self:RegisterEvent("QUEST_COMPLETE")
+
+    self:SecureHook(DBM, "EndCombat", "BOSS_KILL")
+
     self:printKp()
 end
 
 function MyKp:OnDisable()
     self:UnregisterMessage("CHALLENGE_MODE_COMPLETED")
-    self:UnregisterMessage("CHAT_MSG_ADDON")
     self:UnregisterMessage("SHOW_LOOT_TOAST_LEGENDARY_LOOTED")
     self:UnregisterMessage("QUEST_COMPLETE")
 end
 
 -- RAID BOSS 击杀
-function MyKp:CHAT_MSG_ADDON(prefix, msg, channel, sender)
-    local dbmPrefix = (string.sub(channel, 1, 1))
-    if (dbmPrefix ~= "K") then return end
+function MyKp:BOSS_KILL(v, wipe)
 
     local name, instanceType, difficultyID, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceMapID, instanceGroupSize = GetInstanceInfo()
     if (maxPlayers == 5 or instanceMapID < 1027) then

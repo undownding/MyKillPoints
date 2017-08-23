@@ -3,7 +3,9 @@
 ## Notes: Show the KillPoints for your charter
 ## Notes-zhCN: 显示你的角色的 KP 值
 ## Author: undownding
-## Version: v0.0.1
+## Version: v0.0.2
+## RequiredDeps: DBM-Core
+## X-Repple: DBM
 ## SavedVariablesPerCharacter: MyKillPointsDB
 
 
@@ -11,6 +13,7 @@
 libs/AceAddon-3.0/AceAddon-3.0.xml
 libs/AceConsole-3.0/AceConsole-3.0.xml
 libs/AceEvent-3.0/AceEvent-3.0.xml
+libs/AceHook-3.0/AceHook-3.0.xml
 libs/LibStub/LibStub.lua
 
 
