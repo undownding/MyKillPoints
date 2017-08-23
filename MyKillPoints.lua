@@ -58,6 +58,8 @@ end
 
 -- RAID BOSS 击杀
 function MyKp:BOSS_KILL(v, wipe)
+    
+    if (wipe) then return end
 
     local name, instanceType, difficultyID, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceMapID, instanceGroupSize = GetInstanceInfo()
     if (maxPlayers == 5 or instanceMapID < 1027) then
