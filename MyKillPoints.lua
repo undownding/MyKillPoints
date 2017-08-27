@@ -45,7 +45,7 @@ function MyKp:OnEnable()
     self:RegisterEvent("SHOW_LOOT_TOAST_LEGENDARY_LOOTED")
     self:RegisterEvent("QUEST_COMPLETE")
 
-    self:SecureHook(DBM, "EndCombat", "BOSS_KILL")
+    self:Hook(DBM, "BOSS_KILL", "EndCombat")
 
     self:printKp()
 end
@@ -57,9 +57,7 @@ function MyKp:OnDisable()
 end
 
 -- RAID BOSS 击杀
-function MyKp:BOSS_KILL(v, wipe)
-    
-    if (wipe) then return end
+function MyKp:EndCombat(encounterID, name)
 
     local name, instanceType, difficultyID, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceMapID, instanceGroupSize = GetInstanceInfo()
     if (maxPlayers == 5 or instanceMapID < 1027) then
@@ -148,4 +146,3 @@ function MyKp:printKp()
     end
     self:Print(format("当前 KP 值为 %s，约 %s%% 的玩家在当前 KP 值出了下一件橙|R", KpVaule, precent))
 end
-
