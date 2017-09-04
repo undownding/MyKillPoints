@@ -26,7 +26,11 @@ local emissaryQuests = {
     [46746] = true,
     [46747] = true,
     [46748] = true,
-    [46777] = true
+    [46777] = true,
+    [48639] = true,
+    [48642] = true,
+    [48977] = true,
+    [48976] = true
 }
 
 function MyKp:OnInitialize()

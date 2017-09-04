@@ -1,4 +1,4 @@
-## Interface: 70200
+## Interface: 70300
 ## Title: MyKillPoints
 ## Notes: Show the KillPoints for your charter
 ## Notes-zhCN: 显示你的角色的 KP 值
