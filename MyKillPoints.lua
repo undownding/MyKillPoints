@@ -30,6 +30,8 @@ local emissaryQuests = {
     [48639] = true,
     [48642] = true,
     [48977] = true,
+    [46749] = true,
+    [48641] = true,
     [48976] = true
 }
 
